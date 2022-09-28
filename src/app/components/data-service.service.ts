@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { catchError, retry} from 'rxjs/operators';
 import { Observable, BehaviorSubject } from 'rxjs';
 
+
 interface playerPositions{
   playerPositions:number
 }
@@ -24,8 +25,10 @@ interface winnerExists{
 })
 export class DataServiceService {
 
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient) {
   }
+
+  url = "http://localhost:8081/api/"
 
   // The variables which need to be observed for playerinfo component
   private current_player = new BehaviorSubject<Observable<currentPlayer>>(this.getCurrentPlayer())
@@ -49,34 +52,34 @@ export class DataServiceService {
 
   // HTTP methods
   getCurrentPlayer(){
-    let temp = this.http.get<currentPlayer>("http://localhost:8080/api/currentplayer").pipe(retry(3))
+    let temp = this.http.get<currentPlayer>(this.url + "currentplayer").pipe(retry(3))
     return temp
   }
 
   getPlayerPositions(){
-    let temp = this.http.get<playerPositions>("http://localhost:8080/api/playerpositions").pipe(retry(3))
+    let temp = this.http.get<playerPositions>(this.url + "playerpositions").pipe(retry(3))
     return temp
   }
 
   getWinner(){
-    let temp = this.http.get<winnerExists>("http://localhost:8080/api/winnerexists").pipe(retry(3))
+    let temp = this.http.get<winnerExists>(this.url + "winnerexists").pipe(retry(3))
     return temp
   }
 
   getPlayerPosition1(){
-    let playerPositions = this.http.get<playerPositions>("http://localhost:8080/api/playerposition1").pipe(retry(3))
+    let playerPositions = this.http.get<playerPositions>(this.url + "playerposition1").pipe(retry(3))
     return playerPositions
   }
   getPlayerPosition2(){
-    let playerPositions = this.http.get<playerPositions>("http://localhost:8080/api/playerposition2").pipe(retry(3))
+    let playerPositions = this.http.get<playerPositions>(this.url + "playerposition2").pipe(retry(3))
     return playerPositions
   }
   getPlayerPosition3(){
-    let playerPositions = this.http.get<playerPositions>("http://localhost:8080/api/playerposition3").pipe(retry(3))
+    let playerPositions = this.http.get<playerPositions>(this.url + "playerposition3").pipe(retry(3))
     return playerPositions
   }
   getPlayerPosition4(){
-    let playerPositions = this.http.get<playerPositions>("http://localhost:8080/api/playerposition4").pipe(retry(3))
+    let playerPositions = this.http.get<playerPositions>(this.url + "playerposition4").pipe(retry(3))
     return playerPositions
   }
 

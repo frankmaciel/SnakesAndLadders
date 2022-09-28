@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry} from 'rxjs/operators';
+import { DataServiceService } from '../data-service.service';
 
 interface diceRoll {
   dieOne: number;
@@ -14,14 +15,14 @@ interface diceRoll {
 })
 export class RolldiceService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private dataService: DataServiceService) { }
 
   rollDice(){
-    this.http.get("http://localhost:8080/api/advance").subscribe()
+    this.http.get(this.dataService.url + "advance").subscribe()
   }
 
   getDice(){
-    let data = this.http.get<diceRoll>("http://localhost:8080/api/rollnumbers").pipe(retry(3))
+    let data = this.http.get<diceRoll>(this.dataService.url + "rollnumbers").pipe(retry(3))
     return data
   }
 

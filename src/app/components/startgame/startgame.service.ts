@@ -15,7 +15,7 @@ export class StartgameService {
     private dataService: DataServiceService) { }
 
   loadGameData(){
-    this.http.get("http://localhost:8080/api/start").subscribe()
+    this.http.get(this.dataService.url + "start").subscribe()
     this.dataService.refreshAllData()
   }
 
