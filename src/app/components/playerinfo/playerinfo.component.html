@@ -1,0 +1,14 @@
+<span style="width:fit-content; height:fit-content">
+    <span [ngStyle]="{'color': ((currentPlayer|async) == 1) ? 'red' : ((currentPlayer|async) == 2)? 'blue' : ((currentPlayer|async) == 3)? 'green' : 'black' }">
+        Current Player: {{currentPlayer|async}}
+    </span>
+    <span style="padding-right: 15px;"></span>
+    <span>
+        Player Positions: {{playerPositions|async}}
+    </span>
+    <span style="padding-right: 15px;"></span>
+    <span>
+        Winner: {{winner|async}}
+    </span>
+    <span style="padding-right: 15px;"></span>
+</span>

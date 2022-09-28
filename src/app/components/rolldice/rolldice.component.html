@@ -1,0 +1,8 @@
+<div *ngFor="let roll of rolldata | async">
+    <span>({{roll}})</span>
+</div>
+<span style="padding-left: 15px;"></span>
+<span (click) = "roll()" style="width:fit-content; height:fit-content">Roll Dice</span>
+<span style="padding-right: 15px;"></span>
+
+

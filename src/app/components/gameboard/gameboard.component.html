@@ -1,0 +1,10 @@
+<div style="padding-bottom: 1px;width: 503px; background-image: url('assets/images/snakesladdersboard.jpg'); background-size: cover; ">
+  <mat-grid-list cols="10" rowHeight="50px">
+    <mat-grid-tile id={{num}} style="border: solid 2px #000;" *ngFor="let num of arr; let i = index" >
+      <div id="red-{{num}}" style="color: red;" [ngStyle]="{'visibility': num === (playerposition1|async) ? 'visible': 'hidden'}">●</div>
+      <div id="blue-{{num}}" style="color: blue;" [ngStyle]="{'visibility': num === (playerposition2|async) ? 'visible': 'hidden'}">●</div>
+      <div id="green-{{num}}" style="color: green;" [ngStyle]="{'visibility': num === (playerposition3|async) ? 'visible': 'hidden'}">●</div>
+      <div id="black-{{num}}" style="color: black;" [ngStyle]="{'visibility': num === (playerposition4|async) ? 'visible': 'hidden'}">●</div>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
