@@ -12,7 +12,7 @@ public class PlayerObjectTests {
     @Test
     void constructorPosition(){
         player = new PlayerObject(1);
-        if(player.getCurrentPosition() == 1){
+        if(player.getCurrentPosition() == 0){
             assert true;
         }else {
             assert false;
