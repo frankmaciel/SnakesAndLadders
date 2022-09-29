@@ -19,7 +19,7 @@ node {
         unstash 'binary'
     }
     stage('Build and push Docker image') {
-        def customImage = docker.build "frankmaciel/basic-server"
+        def customImage = docker.build "frankmaciel/snakes-and-ladders-java-server"
         docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
             customImage.push("$BUILD_NUMBER")
             customImage.push("latest")

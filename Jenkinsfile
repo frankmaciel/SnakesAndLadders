@@ -22,7 +22,7 @@ node {
         unstash 'distFolder'
     }
     stage('Build Docker image') {
-        def customImage = docker.build("frankmaciel/basic-client", "-f ./dockerfiles/nginx/Dockerfile .")
+        def customImage = docker.build("frankmaciel/snakes-and-ladders-angular-server", "-f ./dockerfiles/nginx/Dockerfile .")
         stage('Push Docker image') {
             docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
                 customImage.push("$BUILD_NUMBER")
