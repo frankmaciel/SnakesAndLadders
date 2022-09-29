@@ -1,6 +1,5 @@
 node {
     stage('Build ng image') {
-        out.info(this,"HITONE")
         def customNodeImage = docker.build "node-with-ng"
         customNodeImage.inside {
             stage('Pull repository') {
