@@ -19,13 +19,12 @@ node {
 }
 node {
     stage('Unstash dist folder') {
-        
-        out.info(this,"HITTWO")
         unstash 'distFolder'
     }
     stage('Build Docker image') {
         def customImage = docker.build("frankmaciel/snakes-and-ladders-angular-server", "-f ./dockerfiles/nginx/Dockerfile .")
         stage('Push Docker image') {
+            out.info(this,"HITTWO")
             docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
                 customImage.push("$BUILD_NUMBER")
                 customImage.push("latest")
