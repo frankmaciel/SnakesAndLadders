@@ -1,5 +1,6 @@
 node {
     stage('Build ng image') {
+        out.info(this,"HITONE")
         def customNodeImage = docker.build "node-with-ng"
         customNodeImage.inside {
             stage('Pull repository') {
@@ -19,6 +20,8 @@ node {
 }
 node {
     stage('Unstash dist folder') {
+        
+        out.info(this,"HITTWO")
         unstash 'distFolder'
     }
     stage('Build Docker image') {
