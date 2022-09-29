@@ -1,3 +1,2 @@
-FROM nginx
-EXPOSE 80
-COPY /dist/snakesladdersapp /usr/share/nginx/html
+FROM node:alpine
+RUN npm install -g @angular/cli
